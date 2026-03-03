@@ -1,0 +1,28 @@
+//COLORS
+$white: #FFFFFF;
+$preto: #000000;
+$blue: #011E41;
+$bg-light: #7B8A9C;
+$bg: #0F0F0F;
+$gray: #333333;
+
+
+//FONTS
+
+$elux-light: 'Electrolux Sans Light';
+$elux-regular: 'Electrolux Sans Regular';
+$elux-semi-bold: 'Electrolux Sans SemiBold';
+$elux-bold: 'Electrolux Sans Bold';
+
+// No topo do seu _variables.scss ou em um novo _mixins.scss
+$base-desk: 1440;
+$base-mob: 340;
+
+@function to-vw($target, $context) {
+  @return ($target / $context) * 100vw;
+}
+
+@mixin fluid($prop, $min, $max, $is-mob: false) {
+  $base: if($is-mob, $base-mob, $base-desk);
+  #{$prop}: clamp(#{$min}px, #{to-vw($max, $base)}, #{$max}px);
+}

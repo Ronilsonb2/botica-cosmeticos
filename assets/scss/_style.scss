@@ -1,0 +1,573 @@
+
+div, p, h1, h2, h3, h4, span {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, h3, h4 {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    line-height: 115%;
+    box-sizing: border-box;
+}
+
+
+img {
+    vertical-align: middle;
+    /* Impede que o texto e os elementos sejam selecionados ao arrastar */
+    -webkit-user-select: none; /* Para navegadores WebKit (Safari, antigos Chrome/Android) */
+    -moz-user-select: none;    /* Para Firefox */
+    -ms-user-select: none;     /* Para Internet Explorer/Edge (legado) */
+    user-select: none;         /* Padrão W3C */
+
+    /* Impede o arrasto do elemento (especialmente importante para imagens) */
+    -webkit-user-drag: none; /* Propriedade mais crítica para arrasto de imagem em navegadores baseados em Chromium/Safari */
+    user-drag: none;         /* Padrão (embora seja mais um alias em alguns navegadores) */
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto 
+}
+
+
+.bg {
+    background-color: $blue;
+}
+
+.ft-Light {
+    font-weight: 300;
+}
+
+.ft-Regular {
+    font-weight: 400;
+}
+
+.ft-SemiBold {
+    font-weight: 700;
+}
+.ft-Bold {
+    font-weight: 900;
+}
+
+.ft-color-blue {
+    color: blue;
+}
+
+.container-100 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.section-1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    align-items: center;
+    flex-direction: column;
+    padding: 5% 5% 0;  
+    text-align: center;
+
+    // @media screen and (max-width: 766px) {
+    //     padding: 0 12% 0 5%;
+    // }
+
+    .logo-botica {
+        margin-bottom: 20px;
+        padding: 3px; // Borda mais fina é mais elegante
+        border-radius: 50%;
+        // Gradiente com mais pontos de cor para simular reflexo
+        background: linear-gradient(145deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
+        box-shadow: 0 0 20px rgba(252, 205, 77, 0.3); // Brilho mais suave
+
+        img {
+            width: 250px;
+            height: 250px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #111; // Linha preta interna para dar profundidade
+        }
+    }
+
+    .info-loja {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: "Nunito Sans", sans-serif;
+
+        .fio {
+            height: 1px; // Apenas 1px de altura
+            width: 100%;
+            max-width: 600px; // Limite a largura para não atravessar a tela toda
+            margin: 10px 0;
+            /* Gradiente: Transparente -> Dourado -> Transparente */
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(198, 167, 94, 0.2) 15%, 
+                rgba(198, 167, 94, 1) 50%, 
+                rgba(198, 167, 94, 0.2) 85%, 
+                transparent 100%
+            );
+            border: none;
+            position: relative;
+
+            // Removemos o ::after exagerado e deixamos apenas um brilho central
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40px;
+                height: 2px;
+                background: #fff;
+                filter: blur(2px); // Brilho focalizado no meio
+                opacity: 0.5;
+            }
+        }
+
+        h1 {
+            @include fluid(font-size, 28, 50);
+            text-transform: uppercase;
+            color: #C6A75E;
+            background: linear-gradient(to bottom, #fceabb 0%, #f8b500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            // O drop-shadow ajuda a destacar o texto no fundo escuro
+            filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5));
+            margin: 0;
+        }
+
+        h3{
+            color: $white;
+            @include fluid(font-size, 22, 30);
+        }
+        p{
+            color: $white;
+            @include fluid(font-size, 22, 25);
+            position: relative;
+        }
+
+        .lojas{
+            @include fluid(font-size, 20, 30);
+
+
+        }
+
+        .btn-whats {
+            margin-top: 5%;
+            text-decoration: none;
+            text-transform: uppercase;
+            @include fluid(font-size, 18, 28);
+            color: $white;
+            background-color: #25D366;
+            padding: 4% 9%;
+            border-radius: 50px;
+              background: linear-gradient(135deg,#25D366 0%,#1EBE5D 60%,#169C4A 100%);
+        }
+    }
+}
+
+.section-2 {
+    padding: 4% 5% 0;
+    display: flex;
+    justify-content: center;
+
+    .escolha-lojas {
+        width: 100%;
+        max-width: 500px; // Um pouco mais estreito para parecer mobile-first
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        .titulo-escolha {
+            color: #E0C27A; // Cor dourada do layout
+            @include fluid(font-size, 20, 28);
+            font-style: italic;
+            margin-bottom: 5px;
+            text-shadow: 0 0 5px rgba(224, 194, 122, 0.3);
+        }
+
+        .btn-loja {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333; // Cor do texto mais escura
+            
+            // Degradê sutil de cinza claro para branco (efeito plástico/premium)
+            background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+            
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-bottom: 3px solid #ccc; // Sombra sólida na base
+            transition: transform 0.2s;
+            @include fluid(font-size, 18, 22);
+
+            img {
+                width: 24px; // Tamanho do ícone lateral
+                height: auto;
+            }
+
+            strong {
+                font-weight: 800;
+                margin-left: 4px;
+            }
+
+            &:active {
+                transform: scale(0.98);
+                background: #e6e6e6;
+            }
+        }
+    }
+
+
+    .fio {
+        height: 1px; // Apenas 1px de altura
+        width: 100%;
+        max-width: 600px; // Limite a largura para não atravessar a tela toda
+        margin: 20px 0;
+        /* Gradiente: Transparente -> Dourado -> Transparente */
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(198, 167, 94, 0.2) 15%, 
+            rgba(198, 167, 94, 1) 50%, 
+            rgba(198, 167, 94, 0.2) 85%, 
+            transparent 100%
+        );
+        border: none;
+        position: relative;
+
+        // Removemos o ::after exagerado e deixamos apenas um brilho central
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 2px;
+            background: #fff;
+            filter: blur(2px); // Brilho focalizado no meio
+            opacity: 0.5;
+        }
+    }
+}
+
+.section-3 {
+    padding: 1% 5% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    // CARD DOURADO DE OFERTAS
+    .card-ofertas {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        // Gradiente Dourado Intenso
+        background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 100%);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255,255,255,0.5);
+        
+        .oferta-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 15px;
+
+            h2 {
+                color: #4a3a10;
+                @include fluid(font-size, 20, 24);
+                margin: 0;
+                font-weight: 800;
+            }
+            p {
+                color: #5c4b1a;
+                @include fluid(font-size, 16, 20);
+                margin: 0;
+            }
+
+            .texto-oferta {
+                display: flex;
+            }
+        }
+
+        .btn-promocoes {
+            display: inline-block;
+            padding: 10px 40px;
+            text-decoration: none;
+            color: #4a3a10; /* Marrom escuro para contraste */
+            font-weight: bold;
+            border-radius: 50px;
+            
+            /* 1. O segredo: Degradê sutil para o efeito 3D */
+            background: linear-gradient(to bottom, #fceabb 0%, #d4af37 100%);
+            
+            /* 2. Bordas: Uma linha fina escura e uma clara para simular relevo */
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            
+            /* 3. Sombras combinadas:
+            - A primeira é a sombra externa (drop shadow)
+            - A segunda (inset) cria o brilho na borda superior interna */
+            box-shadow: 
+                0 4px 10px rgba(0, 0, 0, 0.2), 
+                inset 0 2px 2px rgba(255, 255, 255, 0.5);
+                
+            transition: all 0.3s ease;
+        }
+
+        .btn-promocoes:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 15px rgba(0, 0, 0, 0.25), 
+                inset 0 2px 2px rgba(255, 255, 255, 0.7);
+            filter: brightness(1.1);
+        }
+    }
+
+    .fio {
+        height: 1px; // Apenas 1px de altura
+        width: 100%;
+        max-width: 600px; // Limite a largura para não atravessar a tela toda
+        margin: 20px 0;
+        /* Gradiente: Transparente -> Dourado -> Transparente */
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(198, 167, 94, 0.2) 15%, 
+            rgba(198, 167, 94, 1) 50%, 
+            rgba(198, 167, 94, 0.2) 85%, 
+            transparent 100%
+        );
+        border: none;
+        position: relative;
+
+        // Removemos o ::after exagerado e deixamos apenas um brilho central
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 2px;
+            background: #fff;
+            filter: blur(2px); // Brilho focalizado no meio
+            opacity: 0.5;
+        }
+    }
+
+    // SEÇÃO YOUTUBE
+    .youtube-channel {
+        text-align: center;
+        color: white;
+
+        .yt-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            
+            h3 { font-size: 18px; margin: 0; }
+            .yt-icon { width: 30px; }
+        }
+
+        p { color: #ccc; font-size: 14px; margin: 10px 0; }
+
+        .btn-canal {
+            display: block;
+            width: 250px;
+            padding: 12px;
+            background: linear-gradient(to bottom, #444, #222);
+            border: 1px solid #555;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+    }
+
+    // LISTA DE BENEFÍCIOS
+    .lista-beneficios {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li {
+            color: #e0c27a; // Dourado suave
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .check {
+                font-weight: bold;
+                color: #fccd4d;
+            }
+        }
+    }
+
+    .fio-discreto {
+        width: 60%;
+        height: 1px;
+        background: rgba(224, 194, 122, 0.2);
+    }
+}
+
+
+
+.footer {
+    font-family: "Nunito Sans", sans-serif;
+    color: #006F83;
+    padding: 3% 2%;
+
+    @media screen and (max-width: 992px) {
+        padding: 5% 2%;
+    }
+
+    @media screen and (max-width: 766px) {
+        padding: 8% 3%;
+    }
+
+    .container-m {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+         @media screen and (max-width: 1300px) {
+            width: 95%;
+         }
+
+         @media screen and (max-width: 860px) {
+            flex-direction: column;
+            gap: 50px;
+         }
+
+        img{
+            width: 303px;
+            @include fluid(width, 200, 300);
+
+             @media screen and (max-width: 766px) {
+                width: 80%;
+                max-width: 320px;
+             }
+        }
+
+        p {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            font-size: 21px;
+            line-height: 22px;
+
+            @media screen and (max-width: 766px) {
+                text-align: center;
+                font-size: 20px;
+             }
+
+             @media screen and (max-width: 410px) {
+                font-size: 16px;
+             }
+        }
+
+        a {
+            font-size: 21px;
+            line-height: 22px;
+            color: #006F83;
+            text-decoration: none;
+
+            @media screen and (max-width: 766px) {
+                text-align: center;
+                font-size: 20px;
+             }
+
+             @media screen and (max-width: 410px) {
+                font-size: 16px;
+             }
+
+        }
+    }
+
+    .footer-info {
+        display: flex;
+        align-items: center;
+        gap: 7%;
+        width: 65%;
+        font-weight: 700;
+
+        @media screen and (max-width: 1300px) {
+            gap: 3%;
+        }
+
+         @media screen and (max-width: 990px) {
+            flex-direction: column;
+            width: 50%;
+            gap: 5%;
+
+            img {
+                margin-bottom: 10px;
+            }
+         }
+
+         @media screen and (max-width: 860px) {
+            width: 100%;
+         }
+
+        .redes-socias {
+            display: flex;
+            width: 60%;
+            gap: 12%;
+            justify-content: flex-start;
+            font-size: 22px;
+            line-height: 22px;
+
+            @media screen and (max-width: 1300px) {
+                gap: 8%;
+            }
+
+            @media screen and (max-width: 990px) {
+                width: 100%;
+                justify-content: center;
+            }
+
+            @media screen and (max-width: 410px) {
+                // flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

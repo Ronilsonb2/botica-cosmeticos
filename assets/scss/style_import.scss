@@ -1,0 +1,29 @@
+@import 'base/_variables';
+// @import 'base/_global';
+
+html, body {
+    scroll-behavior: smooth;
+    background: radial-gradient(
+      circle at top center,
+      rgba(198, 167, 94, 0.08),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      #0F0F0F 0%,
+      #1C1C1C 100%
+    );
+}
+#botica-cosmeticos {
+    background-color: $bg;
+    // background-image: url("/assets/img/bg.png");
+    // background-repeat: repeat;
+    color: $white;
+    max-width: 1440px;
+    margin: 0 auto;
+    letter-spacing: 0.01px;
+    padding: 0px;
+    font-family: "Nunito Sans", sans-serif;
+
+    @import '_style';
+}
